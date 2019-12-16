@@ -1,7 +1,7 @@
-import { myitem } from './mymodel';
+import { TodoItem } from '../models/todo';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class HeroService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getItem(): Observable<myitem> {
-    return (this.httpClient.get<myitem>(this.apiurl));
+  getItem(): Observable<TodoItem> {
+    return (this.httpClient.get<TodoItem>(this.apiurl));
   }
 
 }
