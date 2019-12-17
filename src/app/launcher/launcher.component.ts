@@ -1,6 +1,6 @@
+import { TodoItem } from './../models/todo';
 import { Component, OnInit } from '@angular/core';
 import {HeroService} from '../services/hero.service';
-import {TodoItem} from '../models/todo';
 import {LoaderService} from '../services/loader.service';
 import {Subject} from 'rxjs';
 @Component({
@@ -9,16 +9,20 @@ import {Subject} from 'rxjs';
   styleUrls: ['./launcher.component.css']
 })
 export class LauncherComponent implements OnInit {
-  myTodoItem: TodoItem ;
-  isLoading: Subject<boolean> = this.loaderService.isLoading;
-  isLoading2: boolean ;
-  constructor(private heroservice: HeroService, private loaderService: LoaderService) { }
+  loading: boolean;
+  value : any
+  constructor(private heroservice: HeroService, private loaderService: LoaderService) {
+    this.loaderService.isLoading.subscribe((v) => {
+      this.loading = v;
+    });
+   }
 
   ngOnInit() {
-      return this.heroservice.getItem().subscribe(data => {
-        console.log(data);
-        this.myTodoItem = data ;
-        this.isLoading2 = this.myTodoItem.completed;
+      return this.heroservice.getItem().subscribe(response => {
+        console.log(response);
+       // this.status= response.status
+
+      
       });
   }
 
