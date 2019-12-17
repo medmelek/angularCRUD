@@ -6,11 +6,19 @@ import { AppComponent } from './app.component';
 import { LauncherComponent } from './launcher/launcher.component';
 import {LoaderService} from './services/loader.service';
 import {LoaderInterceptor} from './services/interceptor';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListComponent } from './dashboard/list/list.component';
+import { ToolbarComponent } from './dashboard/toolbar/toolbar.component';
+import { CrudComponent } from './dashboard/crud/crud.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LauncherComponent
+    LauncherComponent,
+    DashboardComponent,
+    ListComponent,
+    ToolbarComponent,
+    CrudComponent
   ],
   imports: [
     BrowserModule,

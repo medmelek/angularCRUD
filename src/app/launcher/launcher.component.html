@@ -1,0 +1,35 @@
+<div class="container-fluid" style="padding: 0px">
+  <div class="row vh-100 w-100" style="margin: 0px">
+    <div class="outh vh-100 d-inline-block col-1"></div>
+    <div class="vh-100 d-inline-block col-11" style="background-color: #F8F9F9">
+      <div class="w-100 vh-100 d-flex align-items-center justify-content-center">
+        <form class="w-50">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <div *ngIf="isLoading2 ; else notShow">
+            <button class="btn btn-primary" type="button" disabled>
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Loading...
+            </button>
+          </div>
+          <ng-template #notShow>
+            <button class="btn btn-primary" type="button" >
+              submit
+            </button>
+          </ng-template>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
