@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import {HeroService} from '../services/hero.service';
 import {LoaderService} from '../services/loader.service';
 import {Subject} from 'rxjs';
+import {FormGroup,FormControl, Validators} from '@angular/forms' ;
+import { RouterModule, Routes, Router } from '@angular/router';
+
 @Component({
   selector: 'app-launcher',
   templateUrl: './launcher.component.html',
@@ -11,7 +14,15 @@ import {Subject} from 'rxjs';
 export class LauncherComponent implements OnInit {
   loading: boolean;
   value : any
-  constructor(private heroservice: HeroService, private loaderService: LoaderService) {
+  profileForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
+  constructor(
+    private heroservice: HeroService,
+    private loaderService: LoaderService,
+    private router : Router 
+    ) {
     this.loaderService.isLoading.subscribe((v) => {
       this.loading = v;
     });
@@ -24,6 +35,14 @@ export class LauncherComponent implements OnInit {
 
       
       });
+  }
+
+  onSubmit() {
+    this.router.navigate(['/dashboard']);
+    // TODO: Use EventEmitter with form value
+   // console.warn(this.profileForm.value);
+   //console.warn(this.profileForm.status); for validation
+
   }
 
 }
